@@ -10,10 +10,46 @@ from PIL import Image
 class Sierpinski:
 
 	def __init__(self):
+		invalid = True
+		while invalid:
+			os.system('clear')
+			resolutions = ["Custom resolution", "400 x 400", "800 x 800", "1200 x 1200", "1600, 1600"]
+			tm = TerminalMenu(resolutions, title="Resolution")
+			r = tm.show()
+			if not r == 0:
+				self.width = (r)*400
+				self.height = self.width
+				invalid = False
+			else:
+				os.system('clear')
+				try:
+					self.width = int(input("Resolution (width = height): "))
+					self.height = self.width
+					invalid = False
+				except ValueError:
+					pass
+
+		invalid = True
+		while invalid:
+			os.system('clear')
+			numbers = ["Custom resolution", "10.000", "100.000", "1.000.000", "10.000.000"]
+			tm = TerminalMenu(numbers, title="Iterations")
+			r = tm.show()
+			if not r == 0:
+				self.number = 10**(r+3)
+				invalid = False
+			else:
+				os.system('clear')
+				try:
+					self.number = int(input("Iterations: "))
+					invalid = False
+				except ValueError:
+					pass
+
 		os.system('clear')
-		
-		self.width = 8000
-		self.height = 8000
+
+		# self.width = 8000
+		# self.height = 8000
 		self.img = Image.new('RGB', (self.width, self.height), color = 'white')
 		self.pixels = self.img.load()
 
@@ -21,7 +57,7 @@ class Sierpinski:
 		self.B = Punkt(self.width, 0)
 		self.C = Punkt(self.width/2, self.height)
 		p = Punkt(random.randint(0, self.width), random.randint(0, self.height))
-		self.number = 1000000000
+		# self.number = 1000000000
 		self.algorithm(p)
 		self.img.save('output.png')
 
@@ -46,5 +82,3 @@ class Punkt():
         	return r
 	def print(self):
         	print(self.x, self.y)
-
-

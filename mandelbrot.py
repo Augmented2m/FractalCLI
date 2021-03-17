@@ -33,7 +33,7 @@ class Mandelbrot:
 		invalid = True
 		while invalid:
 			os.system('clear')
-			iterations = ["Custom resolution", "100", "250", "500", "750", "1000"]
+			iterations = ["Custom iterations", "100", "250", "500", "750", "1000"]
 			iter_dic = {1:100, 2:250, 3:500, 4:750, 5:1000}
 			tm = TerminalMenu(iterations, title="Iterations")
 			r = tm.show()
