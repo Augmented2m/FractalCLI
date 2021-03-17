@@ -10,7 +10,6 @@ from PIL import Image
 class Sierpinski:
 
 	def __init__(self):
-
 		invalid = True
 		while invalid:
 			os.system('clear')
