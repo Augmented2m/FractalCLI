@@ -13,7 +13,7 @@ class Sierpinski:
 		invalid = True
 		while invalid:
 			os.system('clear')
-			resolutions = ["Custom resolution", "400 x 400", "800 x 800", "1200 x 1200", "1600, 1600"]
+			resolutions = ["Custom resolution", "400 x 400", "800 x 800", "1200 x 1200", "1600 x 1600"]
 			tm = TerminalMenu(resolutions, title="Resolution")
 			r = tm.show()
 			if not r == 0:
@@ -32,7 +32,7 @@ class Sierpinski:
 		invalid = True
 		while invalid:
 			os.system('clear')
-			numbers = ["Custom resolution", "10.000", "100.000", "1.000.000", "10.000.000"]
+			numbers = ["Custom iterations", "10.000", "100.000", "1.000.000", "10.000.000"]
 			tm = TerminalMenu(numbers, title="Iterations")
 			r = tm.show()
 			if not r == 0:
@@ -48,8 +48,6 @@ class Sierpinski:
 
 		os.system('clear')
 
-		# self.width = 8000
-		# self.height = 8000
 		self.img = Image.new('RGB', (self.width, self.height), color = 'white')
 		self.pixels = self.img.load()
 
@@ -57,7 +55,6 @@ class Sierpinski:
 		self.B = Punkt(self.width, 0)
 		self.C = Punkt(self.width/2, self.height)
 		p = Punkt(random.randint(0, self.width), random.randint(0, self.height))
-		# self.number = 1000000000
 		self.algorithm(p)
 		self.img.save('output.png')
 
