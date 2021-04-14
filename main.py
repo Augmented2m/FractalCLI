@@ -24,7 +24,7 @@ def main():
     os.system('clear')
     fractals = ["Mandelbrot-Menge", "Julia-Menge", "Sierpinski Dreieck", "Barnsley"]
     fractal_class = {0: Mandelbrot, 1: Julia, 2: Sierpinski, 3: Barnsley}
-    fractal_menu = TerminalMenu(fractals, preview_command=show_image, preview_size=1, title="Fractal")
+    fractal_menu = TerminalMenu(fractals, preview_command=show_image, preview_size=0.9, title="Fractal")
     chosen_fractal = fractal_menu.show()
     fractal_class[chosen_fractal]()
 
