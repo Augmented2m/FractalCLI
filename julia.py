@@ -75,7 +75,7 @@ class Julia:
             tm = TerminalMenu(selection2, title="Y")
             r = tm.show()
             if not r == 0:
-                self.x = sel_dic2[r]
+                self.y = sel_dic2[r]
                 invalid = False
             else:
                 try:
@@ -90,8 +90,6 @@ class Julia:
 
         os.system('clear')
 
-        x = self.x
-        y = self.y
 #        self.xRange = 3.4
 #        self.yRange = self.xRange / self.aspectRatio
         self.minX = -1.5
@@ -110,7 +108,6 @@ class Julia:
         self.img.save(self.name + '.png')
 
     def algorithm(self):
-        cx, cy = -0.1, 0.65
 
         for row in tqdm(range(self.height)):
             for col in range(self.width):
@@ -121,8 +118,8 @@ class Julia:
                 
                 while zx*zx + zy*zy < 10 and i < self.precision:
                     xtmp = zx*zx - zy*zy
-                    zy = 2*zx*zy + cy
-                    zx = xtmp + cx
+                    zy = 2*zx*zy + self.y
+                    zx = xtmp + self.x
 
                     i += 1
 

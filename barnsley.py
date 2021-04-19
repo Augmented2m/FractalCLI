@@ -58,7 +58,7 @@ class Barnsley:
             return rightMin + (valueScaled * rightSpan)
 
 
-        img = Image.new('RGB', (resolution, resolution), color = 'white')
+        img = Image.new('RGB', (self.resolution, self.resolution), color = 'white')
         pixels = img.load()
 
         px, py = [], []
