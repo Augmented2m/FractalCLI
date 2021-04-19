@@ -11,6 +11,46 @@ class Barnsley:
 
     def __init__(self):
 
+        invalid = True
+        while invalid:
+            os.system('clear')
+            resolutions = ["Custom resolution", "400 x 400", "800 x 800", "1200 x 1200", "1600 x 1600"]
+            tm = TerminalMenu(resolutions, title = "Resolution")
+            r = tm.show()
+            if not r == 0:
+                self.resolution = (r)*400
+                invalid = False
+            else:
+                os.system('clear')
+                try:
+                    self.resolution = int(input("Resolution: "))
+                    invalid = False
+                except ValueError:
+                    pass
+
+        invalid = True
+        while invalid:
+            os.system('clear')
+            iterations = ["Custom iterations", "100", "250", "500", "750", "1000"]
+            iter_dic = {1:100, 2:250, 3:500, 4:750, 5:1000}
+            r = tm.show()
+            if not r == 0:
+                self.precision = iter_dic[r]
+                invalid = False
+            else:
+                try:
+                    self.precision = int(input("Iterations: "))
+                    invalid = False
+                except ValueError:
+                    pass
+
+        os.system('clear')
+
+        self.name = input("Enter the name of your image: ")
+
+        os.system('clear')
+            
+
         def translate(value, leftMin, leftMax, rightMin, rightMax):
             leftSpan = leftMax - leftMin
             rightSpan = rightMax - rightMin
@@ -18,10 +58,7 @@ class Barnsley:
             return rightMin + (valueScaled * rightSpan)
 
 
-        width = 5000
-        height = 5000
-
-        img = Image.new('RGB', (width, height), color = 'white')
+        img = Image.new('RGB', (resolution, resolution), color = 'white')
         pixels = img.load()
 
         px, py = [], []
@@ -55,6 +92,6 @@ class Barnsley:
         for i in range(len(px)):
             pixels[int(translate(px[i], xm, xma, 1, width-1)),int(translate(py[i], ym, yma, height-1, 1))] =(0,255,0)
 
-        img.save("test.png")
+        img.save(self.name + ".png")
         #plt.scatter(px, py, color='green', s=0.1)
         #plt.show()

@@ -50,6 +50,10 @@ class Mandelbrot:
         # colors (how many & which colors)
         os.system('clear')
 
+        self.name = input("Enter the name of your image: ")
+
+        os.system('clear')
+
         x = -0.65
         y = 0
         self.xRange = 3.4
@@ -64,7 +68,7 @@ class Mandelbrot:
 
         self.algorithm()
 
-        self.img.save('output.png')
+        self.img.save(self.name + '.png')
 
     def algorithm(self):
         for row in tqdm(range(self.height)):

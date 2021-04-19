@@ -50,8 +50,48 @@ class Julia:
         # colors (how many & which colors)
         os.system('clear')
 
-        x = -0.65
-        y = 0
+        invalid = True
+        while invalid:
+            os.system('clear')
+            selection1 = ["Custom X", "-1.0", "0.0", "1.0"]
+            sel_dic = {1:-1, 2:0, 3:1}
+            tm = TerminalMenu(selection1, title="X")
+            r = tm.show()
+            if not r == 0:
+                self.x = sel_dic[r]
+                invalid = False
+            else:
+                try:
+                    self.x = float(input("X: "))
+                    invalid = False
+                except ValueError:
+                    pass
+
+        invalid = True
+        while invalid:
+            os.system('clear')
+            selection2 = ["Custom Y", "-1.0", "0.0", "1.0"]
+            sel_dic2 = {1:-1, 2:0, 3:1}
+            tm = TerminalMenu(selection2, title="Y")
+            r = tm.show()
+            if not r == 0:
+                self.x = sel_dic2[r]
+                invalid = False
+            else:
+                try:
+                    self.y = float(input("Y: "))
+                    invalid = False
+                except ValueError:
+                    pass
+
+        os.system('clear')
+
+        self.name = input("Enter the name of your image: ")
+
+        os.system('clear')
+
+        x = self.x
+        y = self.y
 #        self.xRange = 3.4
 #        self.yRange = self.xRange / self.aspectRatio
         self.minX = -1.5
@@ -67,7 +107,7 @@ class Julia:
 
         self.algorithm()
 
-        self.img.save('output.png')
+        self.img.save(self.name + '.png')
 
     def algorithm(self):
         cx, cy = -0.1, 0.65

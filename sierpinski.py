@@ -47,7 +47,9 @@ class Sierpinski:
                     pass
 
         os.system('clear')
-        self.name = input('Enter the name of the image: ')
+
+        self.name = input('Enter the name of your image: ')
+
         os.system('clear')
 
         self.img = Image.new('RGB', (self.width, self.height), color = 'white')
